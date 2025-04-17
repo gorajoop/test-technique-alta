@@ -2,7 +2,7 @@ package fr.altaprofits.exercice.vehicule;
 
 import fr.altaprofits.exercice.Point;
 
-public class Helicoptere {
+public class Helicoptere implements Vehicule {
     private static Integer idIndex = 0;
     private final String refHelico;
     private Point position;
@@ -12,12 +12,40 @@ public class Helicoptere {
         refHelico = "H-" + ++idIndex;
     }
 
+    @Override
+    public Integer getId() {
+        return idIndex;
+    }
+
+    @Override
+    public String getType() {
+        return "Helicoptere";
+    }
+
+    @Override
     public void seDeplace(int x, int y) {
         vole(new Point(x, y));
     }
 
+    @Override
+    public boolean peutVoler() {
+        return true;
+    }
+
+    @Override
+    public boolean peutNaviguer() {
+        return false;
+    }
+
+    @Override
+    public boolean peutRouler() {
+        return false;
+    }
+
     private void vole(Point destination) {
-        System.out.printf("Véhicule de type hélicoptère (Ref : %s), se déplace de la position %s vers %s\n", refHelico, position, destination);
+        System.out.printf(
+                "VÃ©hicule de type hÃ©licoptÃ¨re (Ref : %s), se dÃ©place de la position %s vers %s\n",
+                refHelico, position, destination);
         position = destination;
     }
 }
